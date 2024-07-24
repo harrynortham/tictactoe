@@ -1,19 +1,29 @@
-// player factory function
 //createPlayer
 // name, marker
 
 // using module pattern: IIFEs because we only need to use once
 
 const gameController = (function () {
-  //create function  which player turn
-
-  //has the square already been clicked
+  // keep track of if a game is currently active
+  const gameActive = function (isActive = false) {
+    return isActive;
+  };
 
   const takeTurn = function (square) {
     // check value exists in object otherwise update the object
+
+    //create function which player turn
+
+    //has the square already been clicked
+
     return "naught";
   };
-  return { takeTurn };
+
+  const resetGame = function () {
+    return console.log("game reset");
+  };
+
+  return { takeTurn, resetGame };
 })();
 
 const gameBoard = (function () {
@@ -21,6 +31,7 @@ const gameBoard = (function () {
   const boardContainer = document.getElementById("game-board-container");
   const gameBoard = document.createElement("div");
   gameBoard.id = "game-board";
+
   // the addSquares function is not returned, therefore private
   const addSquares = () => {
     const squareCount = 9;
@@ -48,11 +59,18 @@ const gameBoard = (function () {
     addSquares();
     boardContainer.appendChild(gameBoard);
   };
+
+  const resetBoard = () => {
+    // reset the board
+    // reset gamecontroller
+  };
+
+  const addButtons = () => {
+    // lets add the buttons here
+    // if game is active show the reset button else show the start game button
+    // start game button will create the board and request player information
+    // reset button will reset all variables associated with the board
+  };
+
   return createBoard();
-  //return {create};
-  //or if we don't want it run immediately, or return multiple functions we can call the gameBoard.create() later
 })();
-
-//create a start game function that create a board and two player objects
-
-//create a reset game function
