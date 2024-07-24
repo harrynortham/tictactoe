@@ -4,15 +4,20 @@
 
 // using module pattern: IIFEs because we only need to use once
 
-const displayController = (function () {
-  const takeTurn = function (i) {
-    console.log("clicked " + i);
+const gameController = (function () {
+  //create function  which player turn
+
+  //has the square already been clicked
+
+  const takeTurn = function (square) {
+    // check value exists in object otherwise update the object
+    return "naught";
   };
   return { takeTurn };
 })();
 
 const gameBoard = (function () {
-  const { takeTurn } = displayController; // give access to the takeTurn function with destructuring
+  const { takeTurn } = gameController; // give access to the takeTurn function with destructuring
   const boardContainer = document.getElementById("game-board-container");
   const gameBoard = document.createElement("div");
   gameBoard.id = "game-board";
@@ -23,10 +28,16 @@ const gameBoard = (function () {
     for (let i = 0; i < squareCount; i++) {
       const square = document.createElement("div");
       square.classList.add("game-square", `game-square--${i}`);
-      // attach click event listener to each square and trigger display controller function, we will work from there
+      // attach click event listener to each square and trigger game controller function, we will work from there
       square.addEventListener("click", () => {
-        takeTurn(i);
         // if takeTurn returns marker X or O we will add element to the div
+        if (takeTurn(i) === "cross") {
+          square.classList.add("game-square-cross");
+        } else if (takeTurn(i) === "naught") {
+          square.classList.add("game-square-naught");
+        } else {
+          return;
+        }
       });
       // add square element to the gameBoard
       gameBoard.appendChild(square);

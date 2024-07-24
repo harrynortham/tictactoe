@@ -14,4 +14,19 @@
   aspect-ratio: 1/1;
   border: 1px solid #ccc;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.game-square.game-square-cross::before {
+  content: "X";
+  display: block;
+}
+
+.game-square.game-square-naught::before {
+  content: "0";
+  display: block;
 }
