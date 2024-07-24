@@ -1,0 +1,14 @@
+#game-board {
+  max-width: 500px;
+  aspect-ratio: 1/1;
+  margin: auto;
+  border: 1px solid #ccc;
+}
+.game-square {
+  width: 33.3333%;
+  aspect-ratio: 1/1;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
